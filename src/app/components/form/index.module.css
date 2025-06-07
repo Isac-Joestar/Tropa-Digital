@@ -1,0 +1,65 @@
+
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .content_input{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .input{
+    height: 40px;
+    width: 100%;
+    border-radius: 15px;
+    border: none;
+    padding: 0px 20px;
+    background-color: #F6F6F6;
+  }
+
+  .label{
+    color: #CC6237;
+    font-weight: bolder;  
+  }
+
+  .button{
+    width: 100%;
+    height: 40px;
+    background-color: #CC6237;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    /* font-size: ; */
+  }
+
+
+  .passwordWrapper {
+    position: relative;
+  }
+  
+  .eyeButton {
+    position: absolute;
+    color: #CC6237;
+    top: 55%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .submitButton {
+    margin-top: 1rem;
+  }
+  
+  
