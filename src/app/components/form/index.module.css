@@ -33,7 +33,7 @@
   .button{
     width: 100%;
     height: 40px;
-    background-color: #CC6237;
+    background-color: var(--special-bg-color);
     color: #FFFFFF;
     border: none;
     border-radius: 100px;
@@ -41,10 +41,8 @@
     /* font-size: ; */
   }
 
-
   .passwordWrapper {
     position: relative;
-    width: 100%;
   }
   
   .eyeButton {
@@ -56,10 +54,14 @@
     border: none;
     cursor: pointer;
     padding: 0;
+
+    /* background-color: aqua; */
     display: flex;
     align-items: center;
     justify-content: center;
+
+    color:  var(--special-bg-color) !important;
+
   }
-  
   
   
