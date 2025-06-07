@@ -44,22 +44,22 @@
 
   .passwordWrapper {
     position: relative;
+    width: 100%;
   }
   
   .eyeButton {
     position: absolute;
-    color: #CC6237;
-    top: 55%;
+    top: 50%;
     right: 12px;
     transform: translateY(-50%);
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
-  .submitButton {
-    margin-top: 1rem;
-  }
   
   
