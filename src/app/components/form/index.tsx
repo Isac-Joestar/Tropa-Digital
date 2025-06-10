@@ -47,6 +47,23 @@ const EyeButton = styled.button`
   color: ${props => props.theme.specialBg};
 `;
 
+const FormStyle = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+`
+const InputGroup = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`
+const PasswordWrapper = styled.div`
+  position: relative;
+`
 export default function Form() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -65,15 +82,15 @@ export default function Form() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <div className={styles.input_group}>
+    <FormStyle onSubmit={handleSubmit}>
+      <InputGroup>
         <Label htmlFor="email">E-mail</Label>
         <Input type="email" name="email" id="email" placeholder="seunome@seuservidor.com" />
-      </div>
+      </InputGroup>
 
       <div className={styles.input_group}>
         <Label htmlFor="password">Senha</Label>
-        <div className={styles.password_wrapper}>
+        <PasswordWrapper>
           <Input
             type={showPassword ? 'text' : 'password'}
             name="password"
@@ -83,10 +100,10 @@ export default function Form() {
           <EyeButton type="button" onClick={() => setShowPassword(!showPassword)}>
             {showPassword ? <IoEyeOffOutline size={24} /> : <IoEyeOutline size={24} />}
           </EyeButton>
-        </div>
+        </PasswordWrapper>
       </div>
 
       <Button type="submit">Enviar</Button>
-    </form>
+    </FormStyle>
   );
 }
