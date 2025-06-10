@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import Form from "./components/form";
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <main className={styles.page}>
       <div className={styles.container}>
         <div className={styles.content_left}>
           <div className={styles.content_top}>
@@ -22,6 +22,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

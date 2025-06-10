@@ -1,16 +1,5 @@
-import Menu from '../components/menu'
-import styles from './index.module.css'
+import EventsPageClient from './eventsPageClient';
 
-export default function Events(){
-    return(
-        <div className={styles.container}>
-            <div className={styles.menu}>
-                <Menu/>
-            </div>
-            <div className={styles.content}>
-
-            </div>
-        </div>
-    )
+export default function EventsPage() {
+  return <EventsPageClient />;
 }
-

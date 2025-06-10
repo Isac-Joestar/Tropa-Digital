@@ -1,4 +1,3 @@
-
 .form{
     width: 100%;
     display: flex;
@@ -6,62 +5,15 @@
     align-items: flex-start;
     justify-content: flex-start;
     gap: 20px;
-  }
+}
 
-  .content_input{
+.input_group{
     width: 100%;
-    height: auto;
     display: flex;
     flex-direction: column;
     gap: 5px;
-  }
+}
 
-  .input{
-    height: 40px;
-    width: 100%;
-    border-radius: 15px;
-    border: none;
-    padding: 0px 20px;
-    background-color: #F6F6F6;
-  }
-
-  .label{
-    color: #CC6237;
-    font-weight: bolder;  
-  }
-
-  .button{
-    width: 100%;
-    height: 40px;
-    background-color: var(--special-bg-color);
-    color: #FFFFFF;
-    border: none;
-    border-radius: 100px;
-    cursor: pointer;
-    /* font-size: ; */
-  }
-
-  .passwordWrapper {
+.password_wrapper{
     position: relative;
-  }
-  
-  .eyeButton {
-    position: absolute;
-    top: 50%;
-    right: 12px;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-
-    /* background-color: aqua; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color:  var(--special-bg-color) !important;
-
-  }
-  
-  
+}

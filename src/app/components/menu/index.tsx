@@ -1,72 +1,80 @@
 'use client'
-
-import styles from './index.module.css'
-import { useState } from "react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
+
+import {
+  MenuWrapper, SectionTitle, ListItem, NavLink, Icon,
+  PhotoWrapper, Name, Role, ConfigItem, ExitItem
+} from "./styles";
+import styles from './index.module.css'
 
 import { RxDashboard } from "react-icons/rx";
 import { IoCalendarOutline } from "react-icons/io5";
 import { RiTeamLine } from "react-icons/ri";
-import { AiOutlineTeam } from "react-icons/ai";
+import { AiOutlineTeam, AiOutlinePoweroff } from "react-icons/ai";
+import { BsPerson } from "react-icons/bs";
 
-
-
-function Menu(){
-    const [activeItem, setActiveItem] = useState("Dashboard");
+function Menu() {
 
     const pathname = usePathname();
 
-    const menuItems = [
-      { name: "Dashboard", icon: <RxDashboard />, path: "/dashboard" },
+    const menuItems: { name: string; icon: React.ReactNode; path?: string }[] = [
+      { name: "Dashboard", icon: <RxDashboard /> },
       { name: "Eventos", icon: <IoCalendarOutline />, path: "/events" },
-      { name: "Equipes", icon: <RiTeamLine />, path: "/equipes" },
-      { name: "Inscrições", icon: <AiOutlineTeam />, path: "/inscricoes" },
+      { name: "Equipes", icon: <RiTeamLine /> },
+      { name: "Inscrições", icon: <AiOutlineTeam /> },
     ];
 
-    return(
-        <div className={styles.menu}>
-            <div className={styles.content_top}>
-                <img className={styles.logo} src="/icon.svg" alt="" />
-
-                <div className={styles.content_list}>
-                    <p className={styles.section_title}>Menu</p>
-                    <ul className={styles.list}>
-                    {menuItems.map((item) => (
-                        <li
-                            key={item.name}
-                            className={`${styles.li} ${
-                            pathname === item.path ? styles.active : ""
-                            }`}>
-                                <Link href={item.path} className={styles.link}>
-                                <div className={styles.icon}>{item.icon}</div>
-                                <p className={styles.text}>{item.name}</p>
-                            </Link>
-                        </li>
-                        ))}
-                    </ul>
-                </div>
-            </div>
-            <div className={styles.content_bottom}>
-                <div className={styles.perfil}>
-                    <div>
-
-                    </div>
-                    <div>
-                        <p className={styles.name}>Isac Joestar</p>
-                        <p className={styles.adm}>Adiministrador</p>
-                    </div>
-                </div>
-
-                <div className={styles.config}>
-
-                </div>
-                <div className={styles.exit}>
-
-                </div>
-            </div>
+  return (
+    <MenuWrapper>
+      <div className={styles.top_content}>
+        <img className={styles.logo} src="/icon.svg" alt="Logo" />
+        <div className={styles.list_container}>
+          <SectionTitle>Menu</SectionTitle>
+          <ul className={styles.list}>
+            {menuItems.map((item) => (
+              <ListItem key={item.name} $active={pathname === item.path}>
+                {item.path ? (
+                  <NavLink href={item.path}>
+                    <Icon>{item.icon}</Icon>
+                    <p className={styles.text}>{item.name}</p>
+                  </NavLink>
+                ) : (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: "10px"}}>
+                    <Icon>{item.icon}</Icon>
+                    <p className={styles.text}>{item.name}</p>
+                  </div>
+                )}
+              </ListItem>
+            ))}
+          </ul>
         </div>
-    )
+      </div>
+
+      <div className={styles.bottom_content}>
+        <div className={styles.profile}>
+          <PhotoWrapper>
+            <img src="https://i.pinimg.com/736x/25/98/86/2598860c31b0e9aee5a520d1b08a1580.jpg" alt="Perfil" />
+          </PhotoWrapper>
+          <div className={styles.adm_info}>
+            <Name>Isac Joestar</Name>
+            <Role>Administrador</Role>
+          </div>
+        </div>
+
+        <ConfigItem>
+          <BsPerson />
+          <p>Alterar Dados</p>
+        </ConfigItem>
+
+        <ExitItem>
+            <NavLink href="/">
+                <AiOutlinePoweroff />
+                <p>Sair</p>
+            </NavLink>
+        </ExitItem>
+      </div>
+    </MenuWrapper>
+  );
 }
 
-export default Menu
+export default Menu;
