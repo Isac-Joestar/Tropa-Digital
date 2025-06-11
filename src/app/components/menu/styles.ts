@@ -5,13 +5,40 @@ import Link from "next/link";
 export const MenuWrapper = styled.div`
   height: 100%;
   width: 100%;
-  border-right: solid rgb(185, 185, 185) 1px;
+  max-width: 280px; 
+  min-width: 200px; 
+
+  border-right: solid ${props => props.theme.tertiaryText} 1px;
   background-color: ${props => props.theme.secondaryBg};
+  
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
   padding: 30px 20px;
+
+
+
+  @media (max-width: 1440px) {
+    max-width: 240px;
+    padding: 25px 16px;
+  }
+
+  @media (max-width: 1280px) {
+    max-width: 220px;
+    padding: 20px 12px;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 200px;
+    padding: 16px 10px;
+  }
+
+  @media (min-width: 1921px) {
+    max-width: 300px;
+    padding: 32px 24px;
+  }
+
 `;
 
 export const SectionTitle = styled.p`
@@ -38,11 +65,28 @@ export const ListItem = styled.li<{ $active: boolean }>`
   color: ${({ $active }) => ($active ? '#fff' : 'inherit')};
 
   &:hover {
-    background-color: ${({ $active, theme }) => ($active ? theme.specialBg : '#f0f0f0')};
+    background-color: ${({ $active, theme }) => ($active ? theme.specialBg : theme.hover)};
   }
 
   svg {
     color: ${({ $active }) => ($active ? '#fff' : 'inherit')};
+  }
+
+  & button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  & button p{
+    color: ${props => props.theme.primaryText}
   }
 `;
 
@@ -96,13 +140,15 @@ export const Role = styled.p`
   cursor: pointer;
 `;
 
-export const ConfigItem = styled.div`
+export const ConfigItem = styled.button`
   height: 35px;
   margin-left: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
+  background: none;
+  border: none;
 
   p {
     font-size: 14px;
@@ -118,11 +164,39 @@ export const ConfigItem = styled.div`
   }
 `;
 
-export const ExitItem = styled(ConfigItem)`
-  a:hover {
-    svg,
+export const ExitItem = styled.div`
+  height: 35px;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+
     p {
-      color: rgb(255, 63, 63);
+      font-size: 14px;
+      font-weight: 600;
+      color: ${props => props.theme.primaryText};
+      transition: all 0.3s;
+    }
+
+    svg {
+      font-size: 18px;
+      color: ${props => props.theme.secondaryText};
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      svg,
+      p {
+        color: rgb(255, 63, 63);
+      }
     }
   }
 `;

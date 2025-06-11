@@ -46,16 +46,16 @@ function EventosContainer(){
 
     return(
         <Container>
-            <div className={styles.top}>
+            <header className={styles.top}>
                 <Search search={search} setSearch={setSearch}/>
-                <NewEventBtn>+ inserir novo</NewEventBtn>
-            </div>
+                <NewEventBtn aria-label="Inserir novo evento">+ inserir novo</NewEventBtn>
+            </header>
             <Titles>
-                <li>Nome do evento</li>
-                <li>Total de equipes</li>
-                <li>Status</li>
-                <li>Data</li>
-                <li></li>
+                <div>Nome do evento</div>
+                <div>Total de equipes</div>
+                <div>Status</div>
+                <div>Data</div>
+                <div></div>
             </Titles>
             <EventsList data={eventsData} search={search} />
         </Container>

@@ -64,9 +64,16 @@ const InputGroup = styled.div`
 const PasswordWrapper = styled.div`
   position: relative;
 `
+const Alert = styled.p`
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  color: red;
+`
 export default function Form() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -74,10 +81,11 @@ export default function Form() {
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
 
-    if (email && password) {
+    if (!email || !password) {
+      setErrorMessage('Preencha todos os campos.');
+      return;
+    }else{
       router.push('/events');
-    } else {
-      alert('Preencha todos os campos.');
     }
   };
 
@@ -85,7 +93,13 @@ export default function Form() {
     <FormStyle onSubmit={handleSubmit}>
       <InputGroup>
         <Label htmlFor="email">E-mail</Label>
-        <Input type="email" name="email" id="email" placeholder="seunome@seuservidor.com" />
+        <Input 
+          type="email" 
+          name="email" 
+          id="email" 
+          autoComplete="email"
+          placeholder="seunome@seuservidor.com" 
+        />
       </InputGroup>
 
       <InputGroup>
@@ -95,15 +109,25 @@ export default function Form() {
             type={showPassword ? 'text' : 'password'}
             name="password"
             id="password"
+            autoComplete="current-password"
             placeholder="Digite aqui"
           />
-          <EyeButton type="button" onClick={() => setShowPassword(!showPassword)}>
+          <EyeButton
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            aria-label={showPassword ? 'Ocultar senha' : 'Exibir senha'}
+          >
             {showPassword ? <IoEyeOffOutline size={24} /> : <IoEyeOutline size={24} />}
           </EyeButton>
         </PasswordWrapper>
       </InputGroup>
 
-      <Button type="submit">Enviar</Button>
+      <Button type="submit" aria-label="Enviar formulário de login">Enviar</Button>
+      {errorMessage && (
+        <Alert role="alert">
+          {errorMessage}
+        </Alert>
+      )}
     </FormStyle>
   );
 }

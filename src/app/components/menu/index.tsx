@@ -30,47 +30,53 @@ function Menu() {
         <img className={styles.logo} src="/icon.svg" alt="Logo" />
         <div className={styles.list_container}>
           <SectionTitle>Menu</SectionTitle>
-          <ul className={styles.list}>
-            {menuItems.map((item) => (
-              <ListItem key={item.name} $active={pathname === item.path}>
-                {item.path ? (
-                  <NavLink href={item.path}>
-                    <Icon>{item.icon}</Icon>
-                    <p className={styles.text}>{item.name}</p>
-                  </NavLink>
-                ) : (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: "10px"}}>
-                    <Icon>{item.icon}</Icon>
-                    <p className={styles.text}>{item.name}</p>
-                  </div>
-                )}
-              </ListItem>
-            ))}
-          </ul>
+          <nav aria-label="Menu principal">
+            <ul className={styles.list}>
+              {menuItems.map((item) => (
+                <ListItem key={item.name} $active={pathname === item.path}>
+                  {item.path ? (
+                    <NavLink href={item.path} aria-label={`Ir para ${item.name}`}>
+                      <Icon aria-hidden="true">{item.icon}</Icon>
+                      <p className={styles.text}>{item.name}</p>
+                    </NavLink>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled
+                      aria-label={`${item.name} (inativo)`}
+                    >
+                      <Icon aria-hidden="true">{item.icon}</Icon>
+                      <p className={styles.text}>{item.name}</p>
+                    </button>
+                  )}
+                </ListItem>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
 
       <div className={styles.bottom_content}>
         <div className={styles.profile}>
           <PhotoWrapper>
-            <img src="https://i.pinimg.com/736x/25/98/86/2598860c31b0e9aee5a520d1b08a1580.jpg" alt="Perfil" />
+            <img src="https://i.pinimg.com/736x/25/98/86/2598860c31b0e9aee5a520d1b08a1580.jpg" alt="Foto do seu perfil" />
           </PhotoWrapper>
           <div className={styles.adm_info}>
-            <Name>Isac Joestar</Name>
+            <Name>Kaique Steck</Name>
             <Role>Administrador</Role>
           </div>
         </div>
 
-        <ConfigItem>
+        <ConfigItem as="button" aria-label="Alterar dados do perfil">
           <BsPerson />
           <p>Alterar Dados</p>
         </ConfigItem>
 
         <ExitItem>
-            <NavLink href="/">
-                <AiOutlinePoweroff />
-                <p>Sair</p>
-            </NavLink>
+          <NavLink href="/">
+            <AiOutlinePoweroff />
+            <p>Sair</p>
+          </NavLink>
         </ExitItem>
       </div>
     </MenuWrapper>

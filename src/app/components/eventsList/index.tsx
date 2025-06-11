@@ -1,43 +1,82 @@
-// components/EventsList.tsx
-import React, { useEffect, useState } from 'react';
+'use client'
+import React, { useEffect, useState, useRef } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 import styled from 'styled-components';
 
 const Container = styled.div``;
-const Infos = styled.ul`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 38px;
-    border-bottom: 1px solid black;    
-    border-bottom: 1px solid ${props => props.theme.stroke};
+const Row = styled.div.attrs({ role: 'row' })`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 38px;
+  border-bottom: 1px solid black;    
+  border-bottom: 1px solid ${props => props.theme.stroke};
 
+  & li {
+   
+  }
+  
+  & li:not(:first-child) {
+    padding-left: 20px;
+  }
+
+  @media (max-width: 1440px) {
+  & li {
+    font-size: 11px;
+  }
+  }
+
+  @media (max-width: 1280px) {
     & li {
-        width: 25%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        font-size: 12px;
-        color: ${props => props.theme.secondaryText};
+      font-size: 10px;
     }
-    
-    & li:not(:first-child) {
-        padding-left: 20px;
-    }
+  }
 `
-const Edit = styled.div`
-width: 40px;
-height: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
+const Cell = styled.div.attrs({ role: 'cell' })`
+  width: 25%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-font-size: 18px;
-color: ${props => props.theme.specialText} !important;
-cursor: pointer;
+  font-size: 12px;
+  color: ${props => props.theme.secondaryText};
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:not(:first-child) {
+    padding-left: 20px;
+  }
+
+  @media (max-width: 1440px) {
+    &{
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    &{
+      font-size: 10px;
+    }
+  }
+`;
+
+const Edit = styled.button`
+  width: 40px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+  color: ${props => props.theme.specialText} !important;
+  cursor: pointer;
+
+  background: none;
+  border: none;
 
 `
 const Bottom = styled.div`
@@ -78,7 +117,7 @@ const Last = styled.button`
 const Next = styled.button`
     width: 77px;
     background-color: ${props => props.theme.specialBg} !important;
-    color: ${props => props.theme.secondaryBg};;
+    color: #FFFFFF;
 `
 export const StatusDot = styled.div<{ status: string }>`
   width: 10px;
@@ -104,6 +143,9 @@ const EventsList: React.FC<EventsListProps> = ({ data, search }) => {
   const [filteredEvents, setFilteredEvents] = useState<EventInfo[]>(data);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const firstRowRef = useRef<HTMLDivElement | null>(null);
+  const isFirstRender = useRef(true);
+
 
   useEffect(() => {
     const lowerSearch = search.toLowerCase();
@@ -111,35 +153,54 @@ const EventsList: React.FC<EventsListProps> = ({ data, search }) => {
       event.name.toLowerCase().includes(lowerSearch)
     );
     setFilteredEvents(filtered);
+  
     setCurrentPage(1);
   }, [search, data]);
-
+  
+  useEffect(() => {
+    isFirstRender.current = false;
+  }, []);
   const totalPages = Math.ceil(filteredEvents.length / itemsPerPage);
   const paginatedEvents = filteredEvents.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  
+    setTimeout(() => {
+      firstRowRef.current?.focus();
+    }, 0);
+  };
+
   return (
     <Container>
       {paginatedEvents.map((event, index) => (
-        <Infos key={index}>
-          <li>{event.name}</li>
-          <li>{event.totalTeams}</li>
-          <li>
+        <Row 
+          key={event.name}
+          ref={index === 0 ? firstRowRef : null}
+          role="row"
+          tabIndex={0}
+          aria-label={`Evento: ${event.name}, ${event.status}, ${event.date}`}
+          >
+          <Cell>{event.name}</Cell>
+          <Cell>{event.totalTeams}</Cell>
+          <Cell>
             <StatusDot status={event.status} /> {event.status}
-          </li>
-          <li>{event.date}</li>
-          <Edit>
+          </Cell>
+          <Cell>{event.date}</Cell>
+          <Edit aria-label={`Abrir ações para ${event.name}`}>
             <BsThreeDotsVertical />
           </Edit>
-        </Infos>
+        </Row>
       ))}
 
       {totalPages > 1 && (
         <Bottom>
           <Last
-            onClick={() => currentPage > 1 && setCurrentPage(currentPage - 1)}
+            onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
+            aria-label={`Página anterior`}
             style={{
               cursor: currentPage > 1 ? 'pointer' : 'default',
               opacity: currentPage > 1 ? 1 : 0.5,
@@ -151,8 +212,9 @@ const EventsList: React.FC<EventsListProps> = ({ data, search }) => {
           {Array.from({ length: totalPages }, (_, i) => (
             <PageButton
               key={i}
-              onClick={() => setCurrentPage(i + 1)}
+              onClick={() => handlePageChange(i + 1)}
               $active={currentPage === i + 1}
+              aria-label={`Página ${i + 1}`}
             >
               {i + 1}
             </PageButton>
@@ -160,8 +222,9 @@ const EventsList: React.FC<EventsListProps> = ({ data, search }) => {
 
           <Next
             onClick={() =>
-              currentPage < totalPages && setCurrentPage(currentPage + 1)
+              currentPage < totalPages && handlePageChange(currentPage + 1)
             }
+            aria-label={`Próxima página`}
             style={{
               cursor: currentPage < totalPages ? 'pointer' : 'default',
               opacity: currentPage < totalPages ? 1 : 0.5,

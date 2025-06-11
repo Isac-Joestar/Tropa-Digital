@@ -14,9 +14,9 @@ export const NewEventBtn = styled.button`
     border: none;
     cursor: pointer;
     background-color: ${props => props.theme.specialBg};
-    color: ${props => props.theme.secondaryBg};
+    color: #FFFFFF;
 `
-export const Titles = styled.ul`
+export const Titles = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -26,18 +26,18 @@ export const Titles = styled.ul`
     border-bottom: 1px solid ${props => props.theme.stroke};
     
 
-    & li {
+    & div {
         font-size: 13px;
         color: ${props => props.theme.specialTextOpacity};
         
     }
-    & li:not(:first-child) {
+    & div:not(:first-child) {
         padding-left: 20px;
     }
-    & li:not(:last-child) {
+    & div:not(:last-child) {
         width: 25%;
     }
-    & li:last-child {
+    & div:last-child {
         width: 40px;
         height: 100%;
     }

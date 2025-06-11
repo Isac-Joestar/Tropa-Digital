@@ -12,6 +12,7 @@ declare module "styled-components" {
       tertiaryText: string;
       specialText: string;
 
+      hover: string
       specialTextOpacity: string;
       stroke: string;
   }

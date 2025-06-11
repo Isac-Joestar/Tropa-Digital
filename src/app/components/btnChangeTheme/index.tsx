@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { MdSunny } from "react-icons/md";
 
 const BtnChangeThemeStyle = styled.div`
-    background-color: #2e3c622f;
+    background-color: ${props => props.theme.hover};
     height: 40px;
     width: 50px;
     border-radius: 12px;
@@ -11,6 +11,7 @@ const BtnChangeThemeStyle = styled.div`
     justify-content: center;
     text-align: center;
     
+    color: ${props => props.theme.primaryText};
     font-size: 22px;
     cursor: pointer;
 `

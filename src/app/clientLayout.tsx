@@ -21,9 +21,9 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <ThemeContext.Provider value={{ theme }}>
       <ThemeProvider theme={theme}>
         <GlobalStyle/>
-        {/* <div className={style.toggle_theme}>
+        <div className={style.toggle_theme}>
             <BtnChangeTheme toggleTheme={toggleTheme} />
-        </div> */}
+        </div>
         {children}
       </ThemeProvider>
     </ThemeContext.Provider>
