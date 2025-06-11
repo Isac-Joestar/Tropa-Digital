@@ -4,7 +4,7 @@ import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { IoEyeOutline, IoEyeOffOutline } from 'react-icons/io5';
 
-import styles from './index.module.css'
+
 import styled from 'styled-components';
 
 
@@ -88,7 +88,7 @@ export default function Form() {
         <Input type="email" name="email" id="email" placeholder="seunome@seuservidor.com" />
       </InputGroup>
 
-      <div className={styles.input_group}>
+      <InputGroup>
         <Label htmlFor="password">Senha</Label>
         <PasswordWrapper>
           <Input
@@ -101,7 +101,7 @@ export default function Form() {
             {showPassword ? <IoEyeOffOutline size={24} /> : <IoEyeOutline size={24} />}
           </EyeButton>
         </PasswordWrapper>
-      </div>
+      </InputGroup>
 
       <Button type="submit">Enviar</Button>
     </FormStyle>

@@ -1,5 +1,6 @@
 import styles from "./page.module.css";
-import Form from "./components/form";
+import Form from "./components/form/index";
+import TestStyled from "./components/testStyled";
 export default function Home() {
   return (
     <main className={styles.page}>
