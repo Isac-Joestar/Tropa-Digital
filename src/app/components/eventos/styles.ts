@@ -6,6 +6,7 @@ export const Container = styled.div`
     padding: 20px 10px;
     border-radius: 10px;
 
+    transition: background-color 0.5s ease;
 `
 export const NewEventBtn = styled.button`
     height: 36px;
@@ -15,6 +16,8 @@ export const NewEventBtn = styled.button`
     cursor: pointer;
     background-color: ${props => props.theme.specialBg};
     color: #FFFFFF;
+
+    transition: background-color 0.5s ease;
 `
 export const Titles = styled.div`
     width: 100%;
@@ -24,11 +27,15 @@ export const Titles = styled.div`
     justify-content: space-between;
     height: 39px;
     border-bottom: 1px solid ${props => props.theme.stroke};
+
+    transition: border-bottom 0.5s ease;
     
 
     & div {
         font-size: 13px;
         color: ${props => props.theme.specialTextOpacity};
+
+        transition: color 0.5s ease;
         
     }
     & div:not(:first-child) {
@@ -50,4 +57,6 @@ export const Next = styled.button`
     width: 77px;
     background-color: ${props => props.theme.specialBg} !important;
     color: ${props => props.theme.secondaryBg};;
+
+    transition: background-color 0.5s ease, color 0.5s ease;
 `

@@ -1,5 +1,5 @@
 
-interface DefaulTheme{
+interface DefaultTheme{
   primaryBg: string,
   secondaryBg: string,
   tertiaryBg: string,
@@ -12,10 +12,11 @@ interface DefaulTheme{
 
   hover: string
   specialTextOpacity: string
-  stroke: string
+  stroke: string;
+  exit: string
 }
 
-export const light: DefaulTheme ={
+export const light: DefaultTheme ={
   primaryBg: "#F9FBFF",
   secondaryBg: "#FFFFFF",
   tertiaryBg: "#F6F6F6",
@@ -29,21 +30,23 @@ export const light: DefaulTheme ={
   hover: "#F6F6F6",
   specialTextOpacity: "rgba(204, 98, 55, 0.5)",
   stroke: "rgba(204, 98, 55, 0.1)",
+  exit: "red"
 }
 
-export const dark: DefaulTheme ={
-  primaryBg: "rgba(0, 5, 19, 1)",
-  secondaryBg: "#070707",
-  tertiaryBg: "#D7D7D7",
-  specialBg: "#CC6237",
+export const dark: DefaultTheme = {
+  primaryBg: "#121212",             
+  secondaryBg: "#1E1E1E",           
+  tertiaryBg: "#2A2A2A",            
 
-  primaryText: "rgba(231, 231, 231, 1)",
-  secondaryText: "rgba(255, 255, 255, 0.6)",
-  // secondaryText: "#252525",
-  tertiaryText: "rgba(42, 77, 142, 0.5)",
-  specialText: "#CC6237",
+  specialBg: "#CC6237",             
+  specialText: "#CC6237",           
 
-  hover: "#0B0B0B",
-  specialTextOpacity: "rgba(204, 98, 55, 0.80)",
-  stroke: "rgba(204, 98, 55, 0.25)",
-}
+  primaryText: "#F5F5F5",           
+  secondaryText: "#B0B0B0",         
+  tertiaryText: "rgba(255, 255, 255, 0.4)", 
+
+  hover: "#333333",                 
+  specialTextOpacity: "rgba(204, 98, 55, 0.5)", 
+  stroke: "rgba(204, 98, 55, 0.1)", 
+  exit: "#C7171"
+};

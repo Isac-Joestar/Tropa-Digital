@@ -8,8 +8,8 @@ import Form from "../form/index";
 const Container = styled.div`
   height: auto;
   min-height: 500px; 
-  max-width: 800px; 
-  min-width: 700px;
+  max-width: 900px; 
+  min-width: 800px;
   padding: 10px;
   border-radius: 20px;
   background-color: ${props => props.theme.secondaryBg};
@@ -20,9 +20,11 @@ const Container = styled.div`
 
   box-shadow: 0px 100px 200px 0px rgba(0, 0, 0, 0.19);
 
+  transition: background-color 0.5s ease;
+
   @media (max-width: 1600px) {
   & {
-    max-width: 600px;
+    max-width: 900px;
     padding: 16px;
   }
   }
@@ -45,11 +47,15 @@ const Title = styled.h1`
   font-size: 26px;
   font-weight: bold;
   color: ${props => props.theme.specialText};
+
+  transition: color 0.5s ease;
 `
 const Sub_title = styled.p`
   font-size: 13px;
   font-weight: normal;
   color: ${props => props.theme.secondaryText};
+
+  transition:  color 0.5s ease;
 
 `
 const Rectangle = styled.p`
@@ -57,6 +63,8 @@ const Rectangle = styled.p`
   min-width: 320px;
   min-height: 500px;
   border-radius: 20px;
+
+  transition: background-color 0.5s ease;
 `
 
 function Login() {

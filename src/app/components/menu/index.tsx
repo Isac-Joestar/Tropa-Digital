@@ -59,7 +59,7 @@ function Menu() {
       <div className={styles.bottom_content}>
         <div className={styles.profile}>
           <PhotoWrapper>
-            <img src="https://i.pinimg.com/736x/25/98/86/2598860c31b0e9aee5a520d1b08a1580.jpg" alt="Foto do seu perfil" />
+            <img src="/image/perfil.png" alt="Foto do seu perfil" />
           </PhotoWrapper>
           <div className={styles.adm_info}>
             <Name>Kaique Steck</Name>

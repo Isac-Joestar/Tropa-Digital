@@ -15,5 +15,6 @@ declare module "styled-components" {
       hover: string
       specialTextOpacity: string;
       stroke: string;
+      exit: string;
   }
 }

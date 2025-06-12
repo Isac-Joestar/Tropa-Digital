@@ -8,12 +8,16 @@ import styled from 'styled-components';
 export const Welcome = styled.p`
   color: ${props => props.theme.primaryText};
   font-size: 16px;
+
+  transition: color 0.5s ease;
 `;
 
 export const Title = styled.h1`
   color: ${props => props.theme.specialText};
   font-size: 20px;
   font-weight: bold;
+
+  transition: color 0.5s ease;
 `;
 
 export default function EventsPageClient() {

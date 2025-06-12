@@ -14,5 +14,6 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     background-color: ${props => props.theme.primaryBg};
+    transition: background-color 0.5s ease;
   }
 `;

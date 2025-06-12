@@ -11,6 +11,8 @@ import styled from 'styled-components';
 const Label = styled.label`
   color: ${props => props.theme.specialText};
   font-weight: bold;
+
+  transition: color 0.5s ease;
 `;
 
 const Input = styled.input`
@@ -20,6 +22,8 @@ const Input = styled.input`
   border: none;
   padding: 0 20px;
   background-color: ${props => props.theme.tertiaryBg};
+
+  transition: background-color 0.5s ease;
 `;
 
 const Button = styled.button`
@@ -30,6 +34,8 @@ const Button = styled.button`
   border: none;
   border-radius: 100px;
   cursor: pointer;
+
+  transition: background-color 0.5s ease;
 `;
 
 const EyeButton = styled.button`
@@ -45,6 +51,8 @@ const EyeButton = styled.button`
   align-items: center;
   justify-content: center;
   color: ${props => props.theme.specialBg};
+
+  transition: color 0.5s ease;
 `;
 
 const FormStyle = styled.form`

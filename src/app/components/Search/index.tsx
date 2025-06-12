@@ -12,6 +12,8 @@ const SearchInput = styled.input`
     border-radius: 33px;
     border: none;
     background-color:  ${props => props.theme.tertiaryBg};
+
+    transition: background-color 0.5s ease;
 `
 const SearchIcon = styled(IoMdSearch)`
   position: absolute;

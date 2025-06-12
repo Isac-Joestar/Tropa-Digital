@@ -14,6 +14,8 @@ const BtnChangeThemeStyle = styled.div`
     color: ${props => props.theme.primaryText};
     font-size: 22px;
     cursor: pointer;
+
+    transition: background-color 0.5s ease, color 0.5s ease;
 `
 
 const BtnChangeTheme = ({toggleTheme}: {toggleTheme: ()=> void})=>{

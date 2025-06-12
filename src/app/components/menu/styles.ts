@@ -10,6 +10,7 @@ export const MenuWrapper = styled.div`
 
   border-right: solid ${props => props.theme.tertiaryText} 1px;
   background-color: ${props => props.theme.secondaryBg};
+  transition: background-color 0.5s ease, border-right 0.5s ease;
   
   display: flex;
   flex-direction: column;
@@ -48,6 +49,7 @@ export const SectionTitle = styled.p`
   text-transform: uppercase;
   letter-spacing: 1px;
   color: ${props => props.theme.secondaryText};
+  transition: color 0.5s ease;
 `;
 
 
@@ -63,6 +65,7 @@ export const ListItem = styled.li<{ $active: boolean }>`
   transition: all 0.3s;
   background-color: ${({ $active, theme }) => ($active ? theme.specialBg : 'transparent')};
   color: ${({ $active }) => ($active ? '#fff' : 'inherit')};
+  transition: background-color 0.5s ease, color 0.5s ease;
 
   &:hover {
     background-color: ${({ $active, theme }) => ($active ? theme.specialBg : theme.hover)};
@@ -83,10 +86,12 @@ export const ListItem = styled.li<{ $active: boolean }>`
     background: none;
     border: none;
     cursor: pointer;
+    transition: color 0.5s ease;
   }
 
   & button p{
     color: ${props => props.theme.primaryText}
+    
   }
 `;
 
@@ -107,6 +112,8 @@ export const Icon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: color 0.5s ease;
 `;
 
 export const PhotoWrapper = styled.div`
@@ -120,6 +127,8 @@ export const PhotoWrapper = styled.div`
   padding: 2px;
   cursor: pointer;
 
+  transition: border 0.5s ease;
+
   img {
     width: 100%;
     border-radius: 15px;
@@ -131,6 +140,7 @@ export const Name = styled.p`
   font-weight: 600;
   color: ${props => props.theme.primaryText};
   cursor: pointer;
+  transition: color 0.5s ease;
 `;
 
 export const Role = styled.p`
@@ -138,6 +148,8 @@ export const Role = styled.p`
   font-weight: 500;
   color: ${props => props.theme.secondaryText};
   cursor: pointer;
+
+  transition: color 0.5s ease;
 `;
 
 export const ConfigItem = styled.button`
@@ -154,13 +166,14 @@ export const ConfigItem = styled.button`
     font-size: 14px;
     font-weight: 600;
     color: ${props => props.theme.primaryText};
-    transition: all 0.3s;
+
+    transition: color 0.5s ease, all 0.3s;
   }
 
   svg {
     font-size: 18px;
     color: ${props => props.theme.secondaryText};
-    transition: all 0.3s;
+    transition: color 0.5s ease, all 0.3s;
   }
 `;
 
@@ -183,19 +196,19 @@ export const ExitItem = styled.div`
       font-size: 14px;
       font-weight: 600;
       color: ${props => props.theme.primaryText};
-      transition: all 0.3s;
+      transition: color 0.5s ease, all 0.3s;
     }
 
     svg {
       font-size: 18px;
       color: ${props => props.theme.secondaryText};
-      transition: all 0.3s;
+      transition: color 0.5s ease, all 0.3s;
     }
 
     &:hover {
       svg,
       p {
-        color: rgb(255, 63, 63);
+        color: ${props => props.theme.exit};
       }
     }
   }
