@@ -48,5 +48,5 @@ export const dark: DefaultTheme = {
   hover: "#333333",                 
   specialTextOpacity: "rgba(204, 98, 55, 0.5)", 
   stroke: "rgba(204, 98, 55, 0.1)", 
-  exit: "#C7171"
+  exit: "#C71717"
 };

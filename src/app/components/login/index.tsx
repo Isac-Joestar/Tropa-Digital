@@ -60,7 +60,7 @@ const Sub_title = styled.p`
 `
 const Rectangle = styled.p`
   background-color: ${props => props.theme.specialBg};
-  min-width: 320px;
+  min-width: 370px;
   min-height: 500px;
   border-radius: 20px;
 
