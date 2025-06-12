@@ -35,8 +35,7 @@ export const Titles = styled.div`
         font-size: 13px;
         color: ${props => props.theme.specialTextOpacity};
 
-        transition: color 0.5s ease;
-        
+        transition: color 0.5s ease;   
     }
     & div:not(:first-child) {
         padding-left: 20px;

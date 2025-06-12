@@ -5,7 +5,7 @@ import { useState} from 'react';
 import {Container, NewEventBtn, Titles} from './styles'
 
 import EventsList from '../eventsList';
-import Search from '../Search/index';
+import Search from '../searchField/index';
 interface EventInfo {
     name: string;
     totalTeams: number;

@@ -8,7 +8,7 @@ export const MenuWrapper = styled.div`
   max-width: 280px; 
   min-width: 200px; 
 
-  border-right: solid ${props => props.theme.tertiaryText} 1px;
+  border-right: solid ${props => props.theme.borderMenu} 1px;
   background-color: ${props => props.theme.secondaryBg};
   transition: background-color 0.5s ease, border-right 0.5s ease;
   

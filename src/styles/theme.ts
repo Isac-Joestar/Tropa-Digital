@@ -1,5 +1,7 @@
 
 interface DefaultTheme{
+  title: string,
+  iconSize: string
   primaryBg: string,
   secondaryBg: string,
   tertiaryBg: string,
@@ -13,10 +15,13 @@ interface DefaultTheme{
   hover: string
   specialTextOpacity: string
   stroke: string;
+  borderMenu: string,
   exit: string
 }
 
 export const light: DefaultTheme ={
+  title: 'light',
+  iconSize: '15px',
   primaryBg: "#F9FBFF",
   secondaryBg: "#FFFFFF",
   tertiaryBg: "#F6F6F6",
@@ -30,10 +35,13 @@ export const light: DefaultTheme ={
   hover: "#F6F6F6",
   specialTextOpacity: "rgba(204, 98, 55, 0.5)",
   stroke: "rgba(204, 98, 55, 0.1)",
+  borderMenu: 'rgba(0, 0, 0, 0.1)',
   exit: "red"
 }
 
 export const dark: DefaultTheme = {
+  title: 'dark',
+  iconSize: '22px',
   primaryBg: "#121212",             
   secondaryBg: "#1E1E1E",           
   tertiaryBg: "#2A2A2A",            
@@ -48,5 +56,6 @@ export const dark: DefaultTheme = {
   hover: "#333333",                 
   specialTextOpacity: "rgba(204, 98, 55, 0.5)", 
   stroke: "rgba(204, 98, 55, 0.1)", 
+  borderMenu: 'rgba(255, 255, 255, 0.1)',
   exit: "#C71717"
 };

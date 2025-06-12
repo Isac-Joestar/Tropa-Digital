@@ -13,25 +13,7 @@ export const Row = styled.div.attrs({ role: 'row' })`
   border-bottom: 1px solid ${props => props.theme.stroke};
   transition: border-bottom 0.5s ease;
 
-  & li {
-   
-  }
-  
-  & li:not(:first-child) {
-    padding-left: 20px;
-  }
 
-  @media (max-width: 1440px) {
-  & li {
-    font-size: 11px;
-  }
-  }
-
-  @media (max-width: 1280px) {
-    & li {
-      font-size: 10px;
-    }
-  }
 `
 export const Cell = styled.div.attrs({ role: 'cell' })`
   width: 25%;
@@ -117,6 +99,7 @@ export const PageButton = styled.button<{ $active: boolean }>`
 
 export const Last = styled.button`
     width: 77px;
+    /* color: ${props => props.theme.primaryText}; */
 `
 export const Next = styled.button`
     width: 77px;

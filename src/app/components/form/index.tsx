@@ -24,6 +24,7 @@ const Input = styled.input`
   background-color: ${props => props.theme.tertiaryBg};
 
   transition: background-color 0.5s ease;
+  color: ${props => props.theme.primaryText};
 `;
 
 const Button = styled.button`

@@ -2,7 +2,7 @@
 
 import styles from "./index.module.css";
 import styled from 'styled-components'
-import Form from "../form/index";
+import Form from "../../../components/form/index";
 
 
 const Container = styled.div`

@@ -1,4 +1,4 @@
-import Login from "./components/login"
+import Login from "./_components/login/index"
 import styles from './page.module.css'
 
 export default function Home() {
