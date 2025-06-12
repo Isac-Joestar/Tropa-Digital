@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState, useRef } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
-import {Container, Row, Cell, StatusDot, Edit, Bottom, PageButton, Last, Next} from './styles'
+import {Container, Content_table, Row, Cell, StatusDot, Edit, Bottom, PageButton, Last, Next} from './styles'
 
 
 
@@ -53,35 +53,34 @@ const EventsList: React.FC<EventsListProps> = ({ data, search }) => {
 
   return (
     <Container>
-      {paginatedEvents.map((event, index) => (
-        <Row 
-          key={event.name}
-          ref={index === 0 ? firstRowRef : null}
-          role="row"
-          tabIndex={0}
-          aria-label={`Evento: ${event.name}, ${event.status}, ${event.date}`}
-          >
-          <Cell>{event.name}</Cell>
-          <Cell>{event.totalTeams}</Cell>
-          <Cell>
-            <StatusDot status={event.status} /> {event.status}
-          </Cell>
-          <Cell>{event.date}</Cell>
-          <Edit aria-label={`Abrir ações para ${event.name}`}>
-            <BsThreeDotsVertical />
-          </Edit>
-        </Row>
-      ))}
+      <Content_table>
+        {paginatedEvents.map((event, index) => (
+          <Row 
+            key={event.name}
+            ref={index === 0 ? firstRowRef : null}
+            role="row"
+            tabIndex={0}
+            aria-label={`Evento: ${event.name}, ${event.status}, ${event.date}`}
+            >
+            <Cell>{event.name}</Cell>
+            <Cell>{event.totalTeams}</Cell>
+            <Cell>
+              <StatusDot status={event.status} /> {event.status}
+            </Cell>
+            <Cell>{event.date}</Cell>
+            <Edit aria-label={`Abrir ações para ${event.name}`}>
+              <BsThreeDotsVertical />
+            </Edit>
+          </Row>
+        ))}
+      </Content_table>
 
       {totalPages > 1 && (
         <Bottom>
           <Last
             onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
-            aria-label={`Página anterior`}
-            style={{
-              cursor: currentPage > 1 ? 'pointer' : 'default',
-              opacity: currentPage > 1 ? 1 : 0.5,
-            }}
+            aria-label="Página anterior"
+            $disabled={currentPage === 1}
           >
             Anterior
           </Last>

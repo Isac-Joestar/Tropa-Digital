@@ -1,7 +1,18 @@
 import styled from "styled-components";
 
 
-export const Container = styled.div``;
+export const Container = styled.div`
+    width: 100%;
+    height: 82%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+`;
+export const Content_table = styled.div`
+    width: 100%;
+`
+
 export const Row = styled.div.attrs({ role: 'row' })`
   width: 100%;
   display: flex;
@@ -97,14 +108,27 @@ export const PageButton = styled.button<{ $active: boolean }>`
     transition: background-color 0.5s ease, color 0.5s ease;
 `;
 
-export const Last = styled.button`
-    width: 77px;
-    /* color: ${props => props.theme.primaryText}; */
-`
+export const Last = styled.button<{ $disabled: boolean }>`
+  width: 77px;
+  background-color: ${({ theme }) => theme.tertiaryBg};;
+  border: none;
+  cursor: ${({ $disabled }) => ($disabled ? 'default !important' : 'pointer')};
+  opacity: ${({ $disabled }) => ($disabled ? 0.5 : 1)};
+  color: ${({ $disabled, theme }) =>
+    $disabled
+      ? theme.title === 'dark'
+        ? '#FFFFFF'
+        : '#A0A0A0'
+      : theme.primaryText};
+    
+  transition: background-color 0.5s ease, color 0.5s ease, opacity 0.3s ease;
+`;
+
 export const Next = styled.button`
     width: 77px;
     background-color: ${props => props.theme.specialBg} !important;
     color: #FFFFFF;
+
     transition: background-color 0.5s ease;
 `
 export const StatusDot = styled.div<{ status: string }>`
