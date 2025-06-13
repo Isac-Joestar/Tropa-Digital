@@ -2,11 +2,10 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     width: 100%;
-    height: 64vh;
+    height: 600px;
     background-color: ${props => props.theme.secondaryBg};
     padding: 20px 10px;
     border-radius: 10px;
-
     transition: background-color 0.5s ease;
 `
 export const NewEventBtn = styled.button`
