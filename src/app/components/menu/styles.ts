@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from "next/link";
 
 export const MenuWrapper = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   max-width: 280px; 
   min-width: 200px; 
